@@ -8,6 +8,8 @@
 bbdb-handy is a BBDB tool, when in headers (TO: and CC:) of message-mode buffer,
 Type TAB key will will pop up a BBDB window as email-address chooser.
 
+![snapshot1.gif](snapshots/snapshot1.gif)
+
 ## Download ##
 
     https://github.com/tumashu/bbdb-handy
