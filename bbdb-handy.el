@@ -83,9 +83,9 @@
 (defvar bbdb-handy-push-buffer nil
   "An alist, record buffer, buffer-window and window-point")
 
-(defun bbdb-handy-push-mail (records &optional subject n verbose)
+(defun bbdb-handy-push-mail (records &optional n verbose)
   "Push email-address(es) of `records' to buffer in `bbdb-handy-push-buffer'."
-  (interactive (list (bbdb-do-records) nil
+  (interactive (list (bbdb-do-records)
                      (or (consp current-prefix-arg)
                          current-prefix-arg)
                      t))
