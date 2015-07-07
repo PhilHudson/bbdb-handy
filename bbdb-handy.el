@@ -201,7 +201,7 @@ when in message body, this command will indent regular text."
   "Setup bbdb-handy Keybindings."
   (define-key bbdb-mode-map "g" 'bbdb-handy-display-all-records)
   (define-key bbdb-mode-map "q" 'bbdb-handy-quit-window)
-  (define-key bbdb-mode-map "p" 'bbdb-handy-bbdb-push-mail)
+  (define-key bbdb-mode-map "p" 'bbdb-handy-push-mail)
   (define-key bbdb-mode-map "\C-s" 'bbdb-handy-search-records)
   (define-key bbdb-mode-map "b" 'bbdb-handy-search-records)
   (define-key bbdb-mode-map "\C-c\C-c" 'bbdb-handy-push-mail)
