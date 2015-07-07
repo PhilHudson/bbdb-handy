@@ -144,7 +144,7 @@ only useful in Message buffer."
         prefix-string)
 
     ;; Update `bbdb-handy-push-buffer'
-    (if (string= mode-name "Message")
+    (if (derived-mode-p 'message-mode)
         (setq prefix-string (bbdb-handy-grab-word)
               bbdb-handy-push-buffer
               `((buffer . ,buffer)
