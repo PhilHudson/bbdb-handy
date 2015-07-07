@@ -98,7 +98,15 @@
       (when buffer
         (with-current-buffer buffer
           (when (not (string= "" to))
-            (insert (concat to ", "))
+            (when (save-excursion
+                    (let* ((end (point))
+                           (begin (line-beginning-position))
+                           (string (buffer-substring-no-properties
+                                    begin end)))
+                      (and (string-match-p "@" string)
+                           (not (string-match-p ", *$" string)))))
+              (insert ", "))
+            (insert to)
             (message "%s, will be push to buffer: \"%s\"" to buffer))
           (setcdr (assoc 'window-point bbdb-handy-push-buffer) (point)))))))
 
