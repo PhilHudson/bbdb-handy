@@ -169,7 +169,7 @@ only useful in Message buffer."
       (bbdb ""))
 
     ;; Update `header-line-format'
-    (when (string= mode-name "Message")
+    (when (derived-mode-p 'message-mode)
       (with-current-buffer bbdb-buffer-name
         (setq header-line-format
               (format "## Type `C-c C-c', `p' or `RET' to push email to buffer \"%s\". ##"
