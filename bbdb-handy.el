@@ -79,6 +79,7 @@
 
 ;;; Code:
 (require 'bbdb)
+(require 'message)
 
 (defvar bbdb-handy-push-buffer nil
   "An alist, record buffer, buffer-window and window-point")
@@ -209,6 +210,7 @@ when in message body, this command will indent regular text."
 (defun bbdb-handy-enable ()
   "Enable bbdb-handy, it will rebind TAB key in `message-mode-map'."
   (interactive)
+  (require 'message)
   (add-hook 'bbdb-mode-hook 'bbdb-handy-keybinding-setup)
   (define-key message-mode-map "\t" 'bbdb-handy-message-tab)
   (message "BBDB-handy: Override BBDB keybindings: g, q, p, CTRL-s, b, CTRL-c CTRL-c, RET"))
