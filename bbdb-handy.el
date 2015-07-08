@@ -162,11 +162,28 @@ only useful in Message buffer."
             prefix-string nil))
 
     ;; Call bbdb
-    (if prefix-string
+    (if (and prefix-string (> (length prefix-string) 0))
         (progn
           (delete-char (- 0 (length prefix-string)))
           (bbdb prefix-string))
-      (bbdb ""))
+      (if (save-excursion
+            (let* ((end (point))
+                   (begin (line-beginning-position))
+                   (string (buffer-substring-no-properties
+                            begin end)))
+              (string-match-p "@.*>$" string)))
+          ;; When point at "email@email.com><I>",
+          ;; launch `bbdb-complete-mail'.
+          (let ((bbdb-pop-up-window-size 0.2)
+                (bbdb-complete-mail-allow-cycling t))
+            (message "Cycling current user's email address!")
+            (bbdb-complete-mail)
+            ;; Close bbdb-buffer's window when complete with
+            ;; `bbdb-complete-mail'
+            (let ((window (get-buffer-window bbdb-buffer-name)))
+              (if (window-live-p window)
+                  (quit-window nil window))))
+        (bbdb "")))
 
     ;; Update `header-line-format'
     (when (derived-mode-p 'message-mode)
